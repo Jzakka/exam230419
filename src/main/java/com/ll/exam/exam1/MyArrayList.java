@@ -33,7 +33,11 @@ public class MyArrayList <T> extends AbstractList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
+        T removed = (T) container[index];
+        for (int i = index; i+1 < sz; i++) {
+            container[i] = container[i + 1];
+        }
         sz--;
-        return (T) container[index];
+        return removed;
     }
 }
