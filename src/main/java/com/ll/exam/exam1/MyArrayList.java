@@ -18,6 +18,9 @@ public class MyArrayList <T> extends AbstractList<T> implements List<T> {
 
     @Override
     public T get(int index) {
+        if (index >= sz) {
+            throw new IndexOutOfBoundsException();
+        }
         return (T) container[index];
     }
 
@@ -33,7 +36,7 @@ public class MyArrayList <T> extends AbstractList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        T removed = (T) container[index];
+        T removed = get(index);
         for (int i = index; i+1 < sz; i++) {
             container[i] = container[i + 1];
         }

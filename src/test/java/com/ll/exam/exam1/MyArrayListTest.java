@@ -91,4 +91,14 @@ class MyArrayListTest {
 
         assertEquals("Element3",list.get(1));
     }
+
+    @Test
+    void 범위밖조회_예외() {
+        assertThrows(IndexOutOfBoundsException.class,()->list.get(1));
+    }
+
+    @Test
+    void 범위밖삭제_예외() {
+        assertThrows(IndexOutOfBoundsException.class,()->list.remove(1));
+    }
 }
