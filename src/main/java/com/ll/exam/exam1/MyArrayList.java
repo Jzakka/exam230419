@@ -1,39 +1,39 @@
 package com.ll.exam.exam1;
 
-public class MyArrayList <T>{
+import java.util.AbstractList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+public class MyArrayList <T> extends AbstractList<T> implements List<T> {
     private int sz = 0;
 
-    public boolean add(T element) {
-        sz++;
+    Object[] container = new Object[10];
+
+    @Override
+    public boolean add(T t) {
+        container[sz++] = t;
         return true;
     }
 
-    public boolean contains(T element) {
-        return false;
+    @Override
+    public T get(int index) {
+        return (T) container[index];
     }
 
+    @Override
     public int size() {
         return sz;
     }
 
-    public int indexOf(T element) {
-        return 0;
-    }
-
+    @Override
     public void clear() {
         sz = 0;
     }
 
-    public boolean isEmpty() {
-        return sz==0;
-    }
-
-    public T get(int idx) {
-        return null;
-    }
-
-    public T remove(int idx) {
+    @Override
+    public T remove(int index) {
         sz--;
-        return null;
+        return (T) container[index];
     }
 }
