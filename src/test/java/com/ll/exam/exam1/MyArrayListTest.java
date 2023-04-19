@@ -72,4 +72,14 @@ class MyArrayListTest {
         assertEquals(0, list.size());
         assertTrue(list.isEmpty());
     }
+
+    @Test
+    void 데이터_100개_삽입() {
+        for (int i = 0; i < 100; i++) {
+            list.add("Element%d".formatted(i + 1));
+        }
+        assertEquals(100,list.size());
+    }
+
+
 }

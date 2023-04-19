@@ -1,9 +1,6 @@
 package com.ll.exam.exam1;
 
-import java.util.AbstractList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class MyArrayList <T> extends AbstractList<T> implements List<T> {
     private int sz = 0;
@@ -12,6 +9,9 @@ public class MyArrayList <T> extends AbstractList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
+        if (sz == container.length) {
+            container = Arrays.copyOf(container, container.length * 2);
+        }
         container[sz++] = t;
         return true;
     }
