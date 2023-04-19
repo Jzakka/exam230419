@@ -81,5 +81,14 @@ class MyArrayListTest {
         assertEquals(100,list.size());
     }
 
+    @Test
+    void 중간꺼_삭제_후_그_위치_재참조는_삭제한거의_다음꺼() {
+        list.add("Element1");
+        list.add("Element2");
+        list.add("Element3");
 
+        list.remove(1);
+
+        assertEquals("Element3",list.get(1));
+    }
 }
