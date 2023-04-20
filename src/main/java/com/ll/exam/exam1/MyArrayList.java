@@ -6,7 +6,15 @@ import java.util.function.Predicate;
 public class MyArrayList <T> extends AbstractList<T> implements List<T> {
     private int sz = 0;
 
-    Object[] container = new Object[10];
+    Object[] container;
+
+    public MyArrayList() {
+        this(10);
+    }
+
+    public MyArrayList(int length) {
+        container = new Object[length];
+    }
 
     @Override
     public boolean add(T t) {
