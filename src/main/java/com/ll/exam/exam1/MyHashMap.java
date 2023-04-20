@@ -65,11 +65,14 @@ public class MyHashMap<K,V> extends AbstractMap<K,V> implements Map<K,V> {
         Node<K, V> entry = table[index];
 
         if (entry != null) {
-            while (entry.next != null) {
+            while (entry != null) {
                 if (entry.key.equals(key)) { // 이미 있는걸 교체
                     V oldValue = entry.value;
                     entry.value = value;
                     return oldValue;
+                }
+                if (entry.next == null) {
+                    break;
                 }
                 entry = entry.next;
             }
