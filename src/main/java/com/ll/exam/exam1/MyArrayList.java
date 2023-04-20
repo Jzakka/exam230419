@@ -1,6 +1,7 @@
 package com.ll.exam.exam1;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class MyArrayList <T> extends AbstractList<T> implements List<T> {
     private int sz = 0;
@@ -42,5 +43,20 @@ public class MyArrayList <T> extends AbstractList<T> implements List<T> {
         }
         sz--;
         return removed;
+    }
+
+    @Override
+    public boolean removeIf(Predicate<? super T> filter) {
+        //TODO
+        int filteredContainerSize = 0;
+        Object[] filteredContainer = new Object[container.length];
+        for (int i = 0; i < sz; i++) {
+            if (!filter.test((T)container[i])) {
+                filteredContainer[filteredContainerSize++] = container[i];
+            }
+        }
+        container = filteredContainer;
+        sz = filteredContainerSize;
+        return container.length != filteredContainerSize;
     }
 }

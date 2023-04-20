@@ -101,4 +101,21 @@ class MyArrayListTest {
     void 범위밖삭제_예외() {
         assertThrows(IndexOutOfBoundsException.class,()->list.remove(1));
     }
+
+    @Test
+    void removeIfTest() {
+        list.add("1");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("3");
+        list.add("2");
+
+        assertTrue(list.removeIf(e->e.equals("2")));
+        assertEquals(list.size(), 4);
+        assertEquals(list.get(0), "1");
+        assertEquals(list.get(1), "1");
+        assertEquals(list.get(2), "3");
+        assertEquals(list.get(3), "3");
+    }
 }
