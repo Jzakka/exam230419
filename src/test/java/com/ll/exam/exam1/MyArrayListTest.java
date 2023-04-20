@@ -1,7 +1,10 @@
 package com.ll.exam.exam1;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -117,5 +120,19 @@ class MyArrayListTest {
         assertEquals(list.get(1), "1");
         assertEquals(list.get(2), "3");
         assertEquals(list.get(3), "3");
+    }
+
+    @Test
+    void indexOfTest() {
+        MyArrayList<String> list = new MyArrayList<>(100);
+
+        IntStream.range(0, 100)
+                .forEach(index -> list.add("사과 %d".formatted(index)));
+
+        Assertions.assertThat(list.indexOf("사과 0")).isEqualTo(0);
+        Assertions.assertThat(list.indexOf("사과 1")).isEqualTo(1);
+        Assertions.assertThat(list.indexOf("사과 5")).isEqualTo(5);
+        Assertions.assertThat(list.indexOf("사과 99")).isEqualTo(99);
+        Assertions.assertThat(list.indexOf("사과 100")).isEqualTo(-1);
     }
 }
