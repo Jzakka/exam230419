@@ -66,7 +66,7 @@ public class MyHashMap<K,V> extends AbstractMap<K,V> implements Map<K,V> {
 
         if (entry != null) {
             while (entry.next != null) {
-                if (entry.key.equals(key)) {
+                if (entry.key.equals(key)) { // 이미 있는걸 교체
                     V oldValue = entry.value;
                     entry.value = value;
                     return oldValue;
@@ -76,6 +76,7 @@ public class MyHashMap<K,V> extends AbstractMap<K,V> implements Map<K,V> {
         }
 
         table[index] = new Node<>(key, value, table[index]);
+        entrySet.add(table[index]);
         return null;
     }
 
